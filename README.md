@@ -28,6 +28,19 @@ To rebase an existing atomic Fedora installation to the latest build:
   systemctl reboot
   ```
 
+### Secureboot
+
+After the first boot, if you have secureboot enabled, you will need to enroll the DisplayLink EVDI module signing key. This is necessary for the evdi module to load correctly.
+
+To do this, run the following command:
+
+```bash
+sudo mokutil --import /etc/pki/DisplayLink/evdi-signing-key.der
+```
+
+You will be prompted to set a password for MOK enrollment. After setting the password, reboot the system. During boot, you will see the MOK Manager screen. Select "Enroll MOK" and follow the prompts. Enter the password you set earlier to enroll the key. After this, the evdi module should load correctly.
+
+
 The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
 
 ## ISO
