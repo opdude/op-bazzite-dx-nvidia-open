@@ -1,0 +1,33 @@
+name: displaylink
+description: Install DisplayLink EVDI driver with secure boot signing support
+author: local
+version: 1.0.0
+
+# Module type
+type: script
+
+# Default configuration
+defaultOptions:
+  rpm_package: "/tmp/rpms/displaylink-1.14.9-1.x86_64.rpm"
+  signing_keys_dir: "/tmp/keys"
+  evdi_git_repo: "https://github.com/DisplayLink/evdi.git"
+  cleanup_build_deps: true
+
+# Required options schema
+options:
+  rpm_package:
+    type: string
+    description: Path to the DisplayLink RPM package
+    required: false
+  signing_keys_dir:
+    type: string
+    description: Directory containing signing keys
+    required: false
+  evdi_git_repo:
+    type: string
+    description: EVDI Git repository URL
+    required: false
+  cleanup_build_deps:
+    type: boolean
+    description: Whether to clean up build dependencies after installation
+    required: false
